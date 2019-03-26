@@ -23,6 +23,14 @@ extract_fitbit_activity_data<- function(csvFileName){
                            skip = idActivities,
                            nrow = lengthActivites-4,
                            sep=','))
+  names(tbl) <- c("Date","BurnCals","Steps","Distance","Floors",
+                  "SedentaryMins","LtActiveMins", "MedActiveMins",
+                  "VeryActiveMins","ActiveCals")
+  tbl$Date <- as.Date(tbl$Date)
+  tbl$BurnCals <- as.numeric(tbl$BurnCals)
+  tbl$ActiveCals <- as.numeric(tbl$ActiveCals)
+  tbl$Steps <- as.numeric(tbl$Steps)
+  tbl$SedentaryMins <- as.numeric(tbl$SedentaryMins)
   return(tbl)
 }
 

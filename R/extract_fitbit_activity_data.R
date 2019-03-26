@@ -19,7 +19,7 @@ extract_fitbit_activity_data<- function(csvFileName){
   # Find the first Activities line
   idActivities <- grep("Activities", lines)[1]
   lengthActivites = idSleep-idActivities
-  tbl <- as.tbl(read.table(fi, header=TRUE,
+  tbl <- as.tbl(read.table(csvFileName, header=TRUE,
                            skip = idActivities,
                            nrow = lengthActivites-4,
                            sep=','))

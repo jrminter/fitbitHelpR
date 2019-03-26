@@ -1,0 +1,83 @@
+---
+title: "Extract data from a Fitbit csv file"
+author: "John Minter"
+date: "Last updated: 2019-03-26"
+output:
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Extract data from a Fitbit csv file}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, comment=NA)
+# suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(dplyr))))
+```
+# Introduction
+
+The interface for downloading data from Fitbit trackers has changed over the
+years. Currently all of the R packages that use the Fitbit API are having
+problems with authorization. I developed this package to scrape data from
+very messy `.csv` files that can be downoaded from the website.
+
+# Get the csv file
+
+I added three csv files I downloaded as external data in the package.
+We will use one of these.
+
+```{r getCsvFile}
+
+inF <- system.file("extdata", "2019-01.csv", package = "fitbitHelpR")
+lines <- readLines(inF) 
+length(lines)
+```
+
+Let's look at lines 1 to 5:
+
+```{r l1to5, echo=FALSE}
+for (i in seq(from=1, to=5)){
+  print(lines[i])
+}
+```
+
+Let's look at lines 34 to 40:
+
+```{r l34to50, echo=FALSE}
+for (i in seq(from=34, to=50)){
+  print(lines[i])
+}
+```
+
+and finally lines 67 to 72
+
+
+```{r l67to72,echo=FALSE}
+
+for (i in seq(from=67, to=72)){
+  print(lines[i])
+}
+
+```
+
+This is quite messy data...
+
+# Process this messy data
+
+I wrote the function `extract_fitbit_activity_data(csvFileName)`to do this.
+It is **not pretty** but it works. Until they change the interface again...
+
+```{r, message=FALSE}
+library(fitbitHelpR)
+tbl <- extract_fitbit_activity_data(inF)
+tbl
+
+
+```
+
+
+

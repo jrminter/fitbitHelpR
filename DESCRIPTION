@@ -1,6 +1,6 @@
 Package: fitbitHelpR
 Title: Convenience functions for processing messy csv files exported from FitBit website
-Version: 0.0.0.1
+Version: 0.0.0.2
 Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
 Maintainer: John Minter <jrminter@gmail.com>
 Description: This package provides convenience functions for processing
@@ -8,14 +8,14 @@ Description: This package provides convenience functions for processing
 Depends:
     R (>= 3.4.0),
     ggplot2,
-    dplyr
-Imports:
-    pander,
+    dplyr,
+    scales
 Suggests:
     testthat,
     knitr,
     rmarkdown,
-License: MIT
+    here
+License: GPL (>= 2)
 LazyData: true
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1

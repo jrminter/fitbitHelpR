@@ -7,6 +7,8 @@
 #' 
 #' @return a tibble
 #' 
+#' @import dplyr
+#' 
 #' @export
 #' 
 #' @examples
